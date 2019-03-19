@@ -78,13 +78,12 @@ if($page>$total_pages) $page=$total_pages;
   <tbody>
   <?php foreach($rows as $row): ?>
     <tr>
-  
       <td><?= $row['campImg_id']?></td>
       <td><?= $row['camp_name']?></td>
       <td><?= $row['campImg_name']?></td>
       <td><?= $row['campImg_file']?></td>
-      <td><a href="campsite_edit.php?camp_id=<?= $row['camp_id'] ?>"><i class="fas fa-edit"></i></a></td>
-      <td><a href="javascript: delete_it(<?= $row['camp_id'] ?>)">
+      <td><a href="campImg_edit.php?campImg_id=<?= $row['campImg_id'] ?>"><i class="fas fa-edit"></i></a></td>
+      <td><a href="javascript: delete_it(<?= $row['campImg_id'] ?>)">
           <i class="fas fa-trash-alt"></i>
       </a>
       </td>
@@ -102,9 +101,9 @@ if($page>$total_pages) $page=$total_pages;
 
 
 <script>
-  function delete_it(camp_id){
-    if(confirm(`確定要刪除編號為 ${camp_id} 的資料嗎?`) ){
-      location.href = 'campsite_delete.php? camp_id=' + camp_id;
+  function delete_it(campImg_id){
+    if(confirm(`確定要刪除編號為 ${campImg_id} 的資料嗎?`) ){
+      location.href = 'campImg_delete.php?  campImg_id=' + campImg_id;
     }
   }
 
