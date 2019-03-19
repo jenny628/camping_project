@@ -8,12 +8,12 @@
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
-         <li class="breadcrumb-item active" aria-current="page">營地列表</li>
+         <li class="breadcrumb-item active" aria-current="page">修改營地資料</li>
          </ol>
         </nav>
 </aside>
 <div class="list-group">
-  <a href="./campsite_list.php" class="list-group-item list-group-item-action ">
+  <a href="./campsite_list.php" class="list-group-item list-group-item-action active">
     營地清單
   </a>
   <a href="#" class="list-group-item list-group-item-action">圖片清單</a>
