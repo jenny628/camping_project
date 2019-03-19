@@ -35,8 +35,8 @@ if($page>$total_pages) $page=$total_pages;
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">營地列表</a></li>
-            <li class="breadcrumb-item"><a href="./campsite_list.php">營地清單</a></li>
+            <li class="breadcrumb-item"><a href="./camp_list.php">營地列表</a></li>
+            <li class="breadcrumb-item active" aria-current="page">營地清單</li>
          </ol>
         </nav>
 </aside>
@@ -67,20 +67,20 @@ if($page>$total_pages) $page=$total_pages;
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">營區名稱</th>
-      <th scope="col">地址</th>
-      <th scope="col">城市</th>
-      <th scope="col">地區</th>
-      <th scope="col">經緯度</th>
-      <th scope="col">聯絡電話</th>
-      <th scope="col">傳真</th>
-      <th scope="col">電子郵件</th>
-      <th scope="col">聯絡人</th>
-      <th scope="col">開放時間</th>
-      <th scope="col">適合對象</th>
-      <th scope="col"><i class="fas fa-edit"></i></th>
-      <th scope="col"><i class="fas fa-trash-alt"></i></th>
+      <th>#</th>
+      <th>營區名稱</th>
+      <th>地址</th>
+      <th>城市</th>
+      <th>地區</th>
+      <th>經緯度</th>
+      <th>聯絡電話</th>
+      <th>傳真</th>
+      <th>電子郵件</th>
+      <th>聯絡人</th>
+      <th>開放時間</th>
+      <th>適合對象</th>
+      <th><i class="fas fa-edit"></i></th>
+      <th><i class="fas fa-trash-alt"></i></th>
     </tr>
   </thead>
   <tbody>
@@ -111,9 +111,10 @@ if($page>$total_pages) $page=$total_pages;
   </tbody>
 </table>
 </div>
-</main>
+
 
  </section>
+ </main>
 
 
 

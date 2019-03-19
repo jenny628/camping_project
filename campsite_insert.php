@@ -89,7 +89,7 @@ $sql="INSERT INTO `campsite_list`(
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">營地列表</a></li>
+            <li class="breadcrumb-item"><a href="./camp_list.php">營地列表</a></li>
             <li class="breadcrumb-item"><a href="./campsite_list.php">營地清單</a></li>
             <li class="breadcrumb-item active" aria-current="page">新增營地資料</li>
          </ol>

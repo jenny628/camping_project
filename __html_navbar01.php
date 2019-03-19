@@ -65,7 +65,7 @@
                             </div>
 
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <a class="card-body ml-2 d-flex" href="./campsite_list.php">
+                                <a class="card-body ml-2 d-flex" href="./camp_list.php">
                                     營地列表
                                 </a>
                                 <a class="card-body ml-2 d-flex" href="">
