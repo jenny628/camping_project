@@ -23,7 +23,7 @@ require __DIR__.'/__connect.php';
     color:red !important;
 }
 </style>
-<main class="col-9 bg-white">
+<main class="col-10 bg-white">
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
@@ -47,23 +47,43 @@ require __DIR__.'/__connect.php';
                 <input type="text" class="form-control" id="camp_name" name="camp_name" placeholder=""
                 value="<?= $row['camp_name'] ?>">
                 <small id="camp_nameHelp" class="form-text text-muted"></small>
+            </div>    
+            <div class="form-group">
+                <label for="city">2.城市</label>
+                <select name="city" id="city" value="<?= $row['city'] ?>"  >
+                    <option value="0">請選擇</option>
+                    <option value="台北市">臺北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="臺南市">臺南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="臺東縣">臺東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+            </select>
+                
             </div>
             <div class="form-group">
-                <label for="camp_address">2.地址</label>
-                <textarea class="form-control" id="camp_address" name="camp_address" cols="30" rows="3"><?= $row['camp_address'] ?></textarea>
-                <small id="camp_addressHelp" class="form-text text-muted"></small>
-            </div>
-            <div class="form-group">
-                <label for="city">3.城市</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder=""
-                value="<?= $row['city'] ?>">
-                <small id="cityHelp" class="form-text text-muted"></small>
-            </div>
-            <div class="form-group">
-                <label for="dist">4.地區</label>
+                <label for="dist">3.地區</label>
                 <input type="text" class="form-control" id="dist" name="dist" placeholder=""
                 value="<?= $row['dist'] ?>">
                 <small id="distHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="camp_address">4.地址</label>
+                <textarea class="form-control" id="camp_address" name="camp_address" cols="30" rows="3"><?= $row['camp_address'] ?></textarea>
+                <small id="camp_addressHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
                 <label for="camp_location">5.經緯度</label>
@@ -102,8 +122,13 @@ require __DIR__.'/__connect.php';
             </div>
             <div class="form-group">
                 <label for="camp_target">11.適合對象</label>
-                <textarea class="form-control" id="camp_target" name="camp_target" cols="30" rows="3"><?= $row['camp_target'] ?></textarea>
-                <small id="camp_targetHelp" class="form-text text-muted"></small>
+                <select name="camp_target" id="camp_target" value="<?= $row['camp_target'] ?>"  >
+                    <option value="0">請選擇</option>
+                    <option value="小家庭">小家庭</option>
+                    <option value="營火晚會">營火晚會</option>
+                    <option value="大型派對">大型派對</option>
+                    <option value="工商團體">工商團體</option>
+            </select>
             </div>
            
 
@@ -120,10 +145,10 @@ require __DIR__.'/__connect.php';
         const submit_btn = document.querySelector('#submit_btn');
 
         const fields = [
-            'camp_name',
-        'camp_address',
+        'camp_name',    
         'city',
         'dist',
+        'camp_address',
         'camp_location',
         'camp_tel',
         'camp_fax',

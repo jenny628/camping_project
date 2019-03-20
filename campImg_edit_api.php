@@ -57,12 +57,13 @@ header('Content-Type:application/json');
         }
      }
 */
-    $sql_s= "UPDATE `campsite_image` SET 
+
+    $sql_s= "UPDATE `campsite_image` SET   
             `camp_name`=?,
-            `campImg_name`=?, 
-            `campImg_file`=?, 
-            `campImg_path`=?,    
-            WHERE `campImg_id`=? ";
+            `campImg_name`=?,
+            `campImg_file`=?,
+            `campImg_path`=?            
+            WHERE  `campImg_id`=? ";
 
     try{
       
@@ -93,3 +94,4 @@ header('Content-Type:application/json');
         
     }
     echo json_encode($result,JSON_UNESCAPED_UNICODE);
+  

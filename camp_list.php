@@ -4,7 +4,7 @@
 ?>
 <?php include __DIR__.'/__html_header.php'; ?>
 <?php include __DIR__.'/__html_navbar01.php'; ?>
-<main class="col-9 bg-white">
+<main class="col-10 bg-white">
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">

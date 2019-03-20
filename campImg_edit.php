@@ -7,8 +7,6 @@ require __DIR__.'/__connect.php';
  $sql="SELECT * FROM `campsite_image` WHERE `campImg_id`=$campImg_id";
  
  $stmt=$pdo->query($sql);
-
- //防止跳到不存在的頁面，會導回列表頁
  if($stmt->rowCount()==0){
      header('Location:campImg_list.php');
      exit;
@@ -23,7 +21,7 @@ require __DIR__.'/__connect.php';
     color:red !important;
 }
 </style>
-<main class="col-9 bg-white">
+<main class="col-10 bg-white">
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
@@ -39,7 +37,7 @@ require __DIR__.'/__connect.php';
         <div class="card-body">
         <div id="info_bar" class="alert alert-success" role="alert" style="display:none"></div>
             <h5 class="card-title">修改資料</h5>
-            <form name="form1" method="post" onsubmit="return checkForm()" >
+            <form name="form2" method="post" onsubmit="return checkForm()" >
             <input type="hidden" name="checkme" value="check123">
             <div class="form-group">
                 <label for="camp_name">1.營區名稱</label>
@@ -60,57 +58,53 @@ require __DIR__.'/__connect.php';
                 <small id="campImg_fileHelp" class="form-text text-muted"></small>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="submit_btn" type="submit" class="btn btn-primary">Submit</button>
             </form>
-           
-
-               
+                       
         </div>
         </div>
 
 
 
     </main>
-<script>
+    <script>
         const info_bar = document.querySelector('#info_bar');
         const submit_btn = document.querySelector('#submit_btn');
 
-        const fields = [
+        const field_image = [
             'camp_name',
             'campImg_name',
             'campImg_file',
+            'campImg_path'
         
         ];
 
-        // 拿到每個欄位的參照
-        const fs = {};
-        for(let v of fields){
-            fs[v] = document.form1[v];
+        const ts = {};
+        for(let v of field_image){
+            ts[v] = document.form2[v];
         }
-        console.log(fs);
-        console.log('fs.campImg_name:', fs.campImg_name);
+        console.log(ts);
+        console.log('ts.camp_name:', ts.camp_name);
 
 
         const checkForm = ()=>{
             let isPassed = true;
             info_bar.style.display = 'none';
 
-            // 拿到每個欄位的值
-            const fsv = {};
-            for(let v of fields){
-                fsv[v] = fs[v].value;
+            const tsv = {};
+            for(let v of field_image){
+                tsv[v] = ts[v].value;
             }
-            console.log(fsv);
-
+            //console.log(tsv);
 
             if(isPassed) {
-                let form = new FormData(document.form1);
+                let form2 = new FormData(document.form2);
 
                 submit_btn.style.display = 'none';
 
                 fetch('campImg_edit_api.php', {
                     method: 'POST',
-                    body: form
+                    body: form2
                 })
                     .then(response=>response.json())
                     .then(obj=>{
@@ -131,6 +125,8 @@ require __DIR__.'/__connect.php';
 
 
 
+            }else{
+                info_bar.innerHTML = '資料修改失敗'; ;
             }
             return false;
         };

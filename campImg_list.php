@@ -31,7 +31,7 @@ if($page>$total_pages) $page=$total_pages;
      right:10px;
  }
 </style>
-<main class="col-9 bg-white">
+<main class="col-10 bg-white">
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">

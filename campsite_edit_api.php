@@ -44,7 +44,7 @@ header('Content-Type:application/json');
     }
 
   
-
+/*
      $s_sql="SELECT * FROM`campsite_list`  WHERE `camp_id`=? OR `camp_email`=? ";
      $s_stmt=$pdo->prepare($s_sql);
      $s_stmt->execute([$camp_id,$_POST['camp_email']]);
@@ -70,10 +70,8 @@ header('Content-Type:application/json');
             exit;
         }
 
-
-
      }
-
+*/
     $sql= "UPDATE `campsite_list` SET 
             `camp_name`=?,
             `camp_address`=?, 

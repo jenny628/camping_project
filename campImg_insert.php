@@ -103,23 +103,17 @@ $sql="INSERT INTO `campsite_image`(
                 value="<?= $campImg_file ?>">
                 <small id="campImg_fileHelp" class="form-text text-muted"></small>
             </div>
-            <!-- <div class="form-group">
-                <label for="upload_image">4.上傳圖片</label>
-                <input type="file" name="my_file">
-            </div> -->
+            <div class="form-group">
+                  <label for="picture" >4.圖片</label><br>  
+                      <img id="myimg" src="" alt="" width="200px">
+                      <br>
+                    <input type="file" id="my_file" name="my_file"><br>
+                       
+            </div>
+                       
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
-            <form action="image_upload.php" method="post" enctype="multipart/form-data" onSubmit="return InputCheck(this)">
-            <label>
-                圖片：
-                <input type="file" name="file" id="file">
-            </label>
-            
-            <br>
-        
-            <button type="submit" id="submit">新增</button>
-            </form>
             
             
            
@@ -131,59 +125,25 @@ $sql="INSERT INTO `campsite_image`(
 </main>
 
 <script>
-/*
-const fields=[
-        'camp_name',
-        'campImg_name',
-        'campImg_file',
+const myimg=document.querySelector('#myimg');
+const my_file=document.querySelector('#my_file');
+
+my_file.addEventListener('change', event => {
         
-    ];
-
-    //取得表單的欄位的參照
-const fs={};
-    for(let v of fields ){
-        fs[v]=document.form1[v];
-    }
-    console.log(fs);
-    console.log('fs.camp_name:', fs.camp_name);
-
-//檢查表格內容是否填寫
-const checkForm=()=>{
-    let isPassed=true;
-    
-    const fsv = {};
-           for(let v of fields){                
-               fsv[v] = fs[v].value;
-           }
-            console.log(fsv);
-
-
-    //填入表單裡email的格式
-    let email_pattern=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    //填入表單裡手機的格式
-    let mobile_pattern=/^09\d{2}\-?\d{3}\-?\d{3}$/;
-
-    for(let v of fields){
-                fs[v].style.borderColor = '#cccccc';
-                document.querySelector('#' + v + 'Help').innerHTML = '';
-            }
-
-            if(fsv.name.length < 2){
-                fs.name.style.borderColor = 'red';
-                document.querySelector('#camp_nameHelp').innerHTML = '請填寫正確的姓名!';
-
-                isPassed = false;
-            }
-            if(! email_pattern.test(fsv.email)){
-                fs.email.style.borderColor = 'red';
-                document.querySelector('#camp_emilHelp').innerHTML = '請填寫正確的 Email!';
-                isPassed = false;
-            }
-      
-
-            return isPassed;
-        };
-       
-*/
+        const fd = new FormData();
+        fd.append('my_file', my_file.files[0]);
+        fetch('image_upload_api.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(obj => {
+                console.log(obj);
+                myimg.setAttribute('src', 'upload/' + obj.filename); // 設定img屬性
+                err.innerHTML = obj.info;
+            })
+    })
 </script>
 <?php include __DIR__.'/__html_footer.php'; ?>

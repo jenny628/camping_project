@@ -84,8 +84,9 @@ $sql="INSERT INTO `campsite_list`(
 .form-group small{
     color:red !important;
 }
+
 </style>
-<main class="col-9 bg-white">
+<main class="col-10 bg-white">
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
@@ -112,23 +113,43 @@ $sql="INSERT INTO `campsite_list`(
                 <input type="text" class="form-control" id="camp_name" name="camp_name" placeholder=""
                 value="<?= $name ?>">
                 <small id="camp_nameHelp" class="form-text text-muted"></small>
+            </div>   
+            <div class="form-group">
+                <label for="city">2.城市</label>
+                <select name="city" id="city" value="<?= $city ?>"  >
+                    <option value="0">請選擇</option>
+                    <option value="台北市">臺北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="臺南市">臺南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="臺東縣">臺東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+            </select>
+                
             </div>
             <div class="form-group">
-                <label for="camp_address">2.地址</label>
-                <textarea class="form-control" id="camp_address" name="camp_address" cols="30" rows="3"><?= $address ?></textarea>
-                <small id="camp_addressHelp" class="form-text text-muted"></small>
-            </div>
-            <div class="form-group">
-                <label for="city">3.城市</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder=""
-                value="<?= $city ?>">
-                <small id="cityHelp" class="form-text text-muted"></small>
-            </div>
-            <div class="form-group">
-                <label for="dist">4.地區</label>
+                <label for="dist">3.地區</label>
                 <input type="text" class="form-control" id="dist" name="dist" placeholder=""
                 value="<?= $dist ?>">
                 <small id="distHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="camp_address">4.地址</label>
+                <textarea class="form-control" id="camp_address" name="camp_address" cols="30" rows="3"><?= $address ?></textarea>
+                <small id="camp_addressHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
                 <label for="camp_location">5.經緯度</label>
@@ -167,8 +188,13 @@ $sql="INSERT INTO `campsite_list`(
             </div>
             <div class="form-group">
                 <label for="camp_target">11.適合對象</label>
-                <textarea class="form-control" id="camp_target" name="camp_target" cols="30" rows="3"><?= $target ?></textarea>
-                <small id="targetHelp" class="form-text text-muted"></small>
+                <select name="camp_target" id="camp_target" value="<?= $target ?>"  >
+                    <option value="0">請選擇</option>
+                    <option value="小家庭">小家庭</option>
+                    <option value="營火晚會">營火晚會</option>
+                    <option value="大型派對">大型派對</option>
+                    <option value="工商團體">工商團體</option>
+            </select>
             </div>
            
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -183,9 +209,9 @@ $sql="INSERT INTO `campsite_list`(
 <script>
 const fields=[
         'camp_name',
-        'camp_address',
         'city',
         'dist',
+        'camp_address',
         'camp_location',
         'camp_tel',
         'camp_fax',
@@ -216,8 +242,6 @@ const checkForm=()=>{
 
     //填入表單裡email的格式
     let email_pattern=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    //填入表單裡手機的格式
-    let mobile_pattern=/^09\d{2}\-?\d{3}\-?\d{3}$/;
 
     for(let v of fields){
                 fs[v].style.borderColor = '#cccccc';
@@ -226,13 +250,13 @@ const checkForm=()=>{
 
             if(fsv.name.length < 2){
                 fs.name.style.borderColor = 'red';
-                document.querySelector('#camp_nameHelp').innerHTML = '請填寫正確的姓名!';
+                document.querySelector('#camp_nameHelp').innerHTML = '請填寫正確的名稱!';
 
                 isPassed = false;
             }
             if(! email_pattern.test(fsv.email)){
                 fs.email.style.borderColor = 'red';
-                document.querySelector('#camp_emilHelp').innerHTML = '請填寫正確的 Email!';
+                document.querySelector('#camp_emilHelp').innerHTML = '請填寫正確的Email!';
                 isPassed = false;
             }
           

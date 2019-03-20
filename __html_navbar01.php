@@ -1,5 +1,5 @@
-<header class="bg-primary">
-        <div class="container">
+<header class="bg-dark">
+        <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <div class="col-6 mt-2">
                     <h1 class=" text-white text-center">
@@ -10,11 +10,11 @@
         </div>
     </header>
 
-    <div class="bg-dark">
-        <div class="container">
+    <div class="bg-white py-3">
+        <div class="container-fluid">
             <div class="row d-flex">
 
-                <nav class="col-3">
+                <nav class="col-2">
                     <div class="accordion" id="accordionExample">
 
                         <div class="card">
@@ -26,7 +26,7 @@
                                 </h2>
                             </div>
 
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <a class="card-body ml-2 d-flex" href="">
                                     訂單管理
                                 </a>
@@ -64,7 +64,7 @@
                                 </h2>
                             </div>
 
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
                                 <a class="card-body ml-2 d-flex" href="./camp_list.php">
                                     營地列表
                                 </a>

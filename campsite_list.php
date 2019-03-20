@@ -31,7 +31,7 @@ if($page>$total_pages) $page=$total_pages;
      right:10px;
  }
 </style>
-<main class="col-9 bg-white">
+<main class="col-10 bg-white">
 <aside class="bg-warning">
       <nav aria-label="breadcrumb">
          <ol class="breadcrumb">
@@ -69,9 +69,9 @@ if($page>$total_pages) $page=$total_pages;
     <tr>
       <th>#</th>
       <th>營區名稱</th>
-      <th>地址</th>
       <th>城市</th>
       <th>地區</th>
+      <th>地址</th>
       <th>經緯度</th>
       <th>聯絡電話</th>
       <th>傳真</th>
@@ -85,20 +85,20 @@ if($page>$total_pages) $page=$total_pages;
   </thead>
   <tbody>
   <?php foreach($rows as $row): ?>
-    <tr>
+    <tr style="white-space:nowrap">
   
       <td><?= $row['camp_id']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_name']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_address']?></td>
-      <td style="white-space:nowrap"><?= $row['city']?></td>
-      <td style="white-space:nowrap"><?= $row['dist']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_location']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_tel']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_fax']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_email']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_ownerName']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_openTime']?></td>
-      <td style="white-space:nowrap"><?= $row['camp_target']?></td>
+      <td><?= $row['camp_name']?></td> 
+      <td><?= $row['city']?></td>
+      <td><?= $row['dist']?></td>
+      <td><?= $row['camp_address']?></td>
+      <td><?= $row['camp_location']?></td>
+      <td><?= $row['camp_tel']?></td>
+      <td><?= $row['camp_fax']?></td>
+      <td><?= $row['camp_email']?></td>
+      <td><?= $row['camp_ownerName']?></td>
+      <td><?= $row['camp_openTime']?></td>
+      <td><?= $row['camp_target']?></td>
       <td><a href="campsite_edit.php?camp_id=<?= $row['camp_id'] ?>"><i class="fas fa-edit"></i></a></td>
       <td><a href="javascript: delete_it(<?= $row['camp_id'] ?>)">
           <i class="fas fa-trash-alt"></i>
