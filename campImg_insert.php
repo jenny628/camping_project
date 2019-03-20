@@ -110,7 +110,16 @@ $sql="INSERT INTO `campsite_image`(
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
-
+            <form action="image_upload.php" method="post" enctype="multipart/form-data" onSubmit="return InputCheck(this)">
+            <label>
+                圖片：
+                <input type="file" name="file" id="file">
+            </label>
+            
+            <br>
+        
+            <button type="submit" id="submit">新增</button>
+            </form>
             
             
            

@@ -77,8 +77,8 @@ require __DIR__.'/__connect.php';
 
         const fields = [
             'camp_name',
-        'campImg_name',
-        'campImg_file',
+            'campImg_name',
+            'campImg_file',
         
         ];
 

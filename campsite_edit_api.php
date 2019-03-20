@@ -7,7 +7,7 @@ header('Content-Type:application/json');
     'success'=>false,
     'errorCode'=>0,
     'errorMsg'=>'資料輸入不完整',
-    'post'=>[],//做echo檢查
+    'post'=>[],
 
  ];
 
@@ -27,7 +27,7 @@ header('Content-Type:application/json');
     $openTime = $_POST['camp_openTime'];
     $target = $_POST['camp_target'];
 
-    $result['post']=$_POST;//做echo檢查
+    $result['post']=$_POST;
 
     if(empty($name)or empty($address) or empty($email)){
         $result['errorCode']=400;
@@ -35,7 +35,7 @@ header('Content-Type:application/json');
         exit;
     }
 
-    //檢查email格式
+ 
     if(! filter_var($email,FILTER_VALIDATE_EMAIL)){
         $result['errorCode']=405;
         $result['errorMsg']='email格式錯誤';
@@ -43,28 +43,25 @@ header('Content-Type:application/json');
         exit;
     }
 
-     // 1. 修改資料之前可以先確認該筆資料是否存在
-     // 2. Email 有沒有跟別筆的資料相同
+  
 
      $s_sql="SELECT * FROM`campsite_list`  WHERE `camp_id`=? OR `camp_email`=? ";
      $s_stmt=$pdo->prepare($s_sql);
      $s_stmt->execute([$camp_id,$_POST['camp_email']]);
 
-     //修改的資料sid不存在，但email已存在，有可能會繼續執行，產生bug
-     //case 1避免上述狀況發生，如果填入的sid和表單中已有的sid不相同，就會出現錯誤訊息
 
      switch($s_stmt->rowCount()){
-        case 0://sid和email都找不到
+        case 0:
             $result['errorCode']=410;
             $result['errorMsg']='該筆資料不存在';
             echo json_encode($result,JSON_UNESCAPED_UNICODE);
             exit;
-        case 2://sid和email都找到
+        case 2:
             $result['errorCode']=420;
             $result['errorMsg']='email已存在';
             echo json_encode($result,JSON_UNESCAPED_UNICODE);
             exit;
-        case 1://只找到email
+        case 1:
         $row = $s_stmt->fetch($pdo::FETCH_ASSOC);
         if($row['camp_id']!=$camp_id){
             $result['errorCode']=430;
@@ -92,12 +89,11 @@ header('Content-Type:application/json');
        
             WHERE `camp_id`=? ";
 
-     //利用try catch來處理PDO的錯誤
+     
     try{
-        //準備執行
+      
         $stmt=$pdo->prepare($sql);
 
-        //執行$stmt，回傳陣列內容
         $stmt->execute([
             $_POST['camp_name'],
             $_POST['camp_address'],

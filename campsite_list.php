@@ -88,19 +88,17 @@ if($page>$total_pages) $page=$total_pages;
     <tr>
   
       <td><?= $row['camp_id']?></td>
-      <td><?= $row['camp_name']?></td>
-      <td><?= $row['camp_address']?></td>
-      <td><?= $row['city']?></td>
-      <td><?= $row['dist']?></td>
-      <td><?= $row['camp_location']?></td>
-      <td><?= $row['camp_tel']?></td>
-      <td><?= $row['camp_fax']?></td>
-      <td><?= $row['camp_email']?></td>
-      <td><?= $row['camp_ownerName']?></td>
-      <td><?= $row['camp_openTime']?></td>
-      <td><?= $row['camp_target']?></td>
-      <!-- <td><?= strip_tags($row['address'])//移除標籤格式//?></td>
-      <td><?= htmlentities($row['birthday'])//將標籤格式轉成文字//?></td> -->
+      <td style="white-space:nowrap"><?= $row['camp_name']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_address']?></td>
+      <td style="white-space:nowrap"><?= $row['city']?></td>
+      <td style="white-space:nowrap"><?= $row['dist']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_location']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_tel']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_fax']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_email']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_ownerName']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_openTime']?></td>
+      <td style="white-space:nowrap"><?= $row['camp_target']?></td>
       <td><a href="campsite_edit.php?camp_id=<?= $row['camp_id'] ?>"><i class="fas fa-edit"></i></a></td>
       <td><a href="javascript: delete_it(<?= $row['camp_id'] ?>)">
           <i class="fas fa-trash-alt"></i>
