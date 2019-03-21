@@ -27,6 +27,7 @@ require __DIR__.'/__connect.php';
     $ownerName = $_POST['camp_ownerName'];
     $openTime = $_POST['camp_openTime'];
     $target = $_POST['camp_target'];
+   
 
 $sql="INSERT INTO `campsite_list`(
      `camp_name`, `camp_address`, `camp_location`, `camp_tel`, `camp_fax`, `camp_email`, `camp_ownerName`, `camp_openTime`, `camp_target`, `city`, `dist`
@@ -69,7 +70,7 @@ $sql="INSERT INTO `campsite_list`(
     }catch( PDOException $ex){
         $msg=[
             'type'=>'danger',
-            'info'=>'Email重複輸入'
+            'info'=>'資料重複輸入'
         ];
     }        
        
@@ -204,7 +205,7 @@ $sql="INSERT INTO `campsite_list`(
 </main>
 <script>
 const fields=[
-        'camp_name',
+        'camp_name',    
         'city',
         'dist',
         'camp_address',
@@ -223,7 +224,7 @@ const fs={};
         fs[v]=document.form1[v];
     }
     console.log(fs);
-    console.log('fs.name:', fs.name);
+    console.log('fs.camp_name:', fs.camp_name);
 
 //檢查表格內容是否填寫
 const checkForm=()=>{
@@ -238,27 +239,32 @@ const checkForm=()=>{
 
     //填入表單裡email的格式
     let email_pattern=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    //填入表單裡手機的格式
+    let mobile_pattern=/^09\d{2}\-?\d{3}\-?\d{3}$/;
 
-    for(let v of fields){
+for(let v of fields){
                 fs[v].style.borderColor = '#cccccc';
                 document.querySelector('#' + v + 'Help').innerHTML = '';
             }
 
             if(fsv.name.length < 2){
                 fs.name.style.borderColor = 'red';
-                document.querySelector('#camp_nameHelp').innerHTML = '請填寫正確的名稱!';
+                document.querySelector('#nameHelp').innerHTML = '請填寫正確的姓名!';
 
                 isPassed = false;
             }
-            if(! email_pattern.test(fsv.email)){
-                fs.email.style.borderColor = 'red';
-                document.querySelector('#camp_emilHelp').innerHTML = '請填寫正確的Email!';
+            if(! email_pattern.test(fsv.camp_email)){
+                fs.camp_email.style.borderColor = 'red';
+                document.querySelector('#camp_emailHelp').innerHTML = '請填寫正確的 Email!';
                 isPassed = false;
             }
-          
+            if(! mobile_pattern.test(fsv.camp_tel)){
+                fs.camp_tel.style.borderColor = 'red';
+                document.querySelector('#camp_telHelp').innerHTML = '請填寫正確的連絡電話!';
+                isPassed = false;
+            }
 
             return isPassed;
         };
-
 </script>
 <?php include __DIR__.'/__html_footer.php'; ?>

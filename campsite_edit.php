@@ -173,28 +173,7 @@ require __DIR__.'/__connect.php';
             }
             console.log(fsv);
 
-/*
-            let email_pattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-            let mobile_pattern = /^09\d{2}\-?\d{3}\-?\d{3}$/;
 
-            for(let v of fields){
-                fs[v].style.borderColor = '#cccccc';
-                document.querySelector('#' + v + 'Help').innerHTML = '';
-            }
-
-            if(fsv.name.length < 2){
-                fs.camp_name.style.borderColor = 'red';
-                document.querySelector('#camp_nameHelp').innerHTML = '請填寫正確的姓名!';
-
-                isPassed = false;
-            }
-            if(! email_pattern.test(fsv.email)){
-                fs.camp_email.style.borderColor = 'red';
-                document.querySelector('#camp_emailHelp').innerHTML = '請填寫正確的 Email!';
-                isPassed = false;
-            }
-            
-*/
 
             if(isPassed) {
                 let form = new FormData(document.form1);
