@@ -103,8 +103,8 @@ if (isset($_POST['checkme'])){
             </div>
             <div class="form-group">
                   <label for="picture" >4.圖片</label><br> 
-                  <input type="hidden" id="camp_image" name="camp_image" value="">
-                      <img id="myimg" src="" alt="" width="400px">
+                  <input type="hidden" id="camp_image" name="camp_image" value="<?= $camp_image ?>">
+                      <img id="myimg" src="./<?= $camp_image ?>" alt="" width="400px">
                       <br>
                     <input type="file" id="my_file" name="my_file"><br>
                        
