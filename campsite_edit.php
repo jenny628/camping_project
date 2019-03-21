@@ -50,27 +50,23 @@ require __DIR__.'/__connect.php';
             </div>    
             <div class="form-group">
                 <label for="city">2.城市</label>
-                <select name="city" id="city" value="<?= $row['city'] ?>"  >
+                <select class="custom-select  col-sm-4 " name="city" id="city" value="<?= $row['city'] ?>"  >
                     <option value="0">請選擇</option>
-                    <option value="台北市">臺北市</option>
-                    <option value="新北市">新北市</option>
-                    <option value="基隆市">基隆市</option>
-                    <option value="桃園市">桃園市</option>
-                    <option value="新竹縣">新竹縣</option>
-                    <option value="新竹市">新竹市</option>
-                    <option value="臺中市">臺中市</option>
-                    <option value="苗栗縣">苗栗縣</option>
-                    <option value="彰化縣">彰化縣</option>
-                    <option value="南投縣">南投縣</option>
-                    <option value="雲林縣">雲林縣</option>
-                    <option value="臺南市">臺南市</option>
-                    <option value="高雄市">高雄市</option>
-                    <option value="嘉義市">嘉義市</option>
-                    <option value="嘉義縣">嘉義縣</option>
-                    <option value="屏東縣">屏東縣</option>
-                    <option value="臺東縣">臺東縣</option>
-                    <option value="花蓮縣">花蓮縣</option>
-                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="臺北市" <?php echo ($row['city']=="臺北市") ?'selected':''?>>臺北市</option>
+                    <option value="新北市" <?php echo ($row['city']=="新北市") ?'selected':''?>>新北市</option>
+                    <option value="基隆市" <?php echo ($row['city']=="基隆市") ?'selected':''?>>基隆市</option>
+                    <option value="桃園市" <?php echo ($row['city']=="桃園市") ?'selected':''?>>桃園市</option>
+                    <option value="新竹縣" <?php echo ($row['city']=="新竹縣") ?'selected':''?>>新竹縣</option>
+                    <option value="臺中市" <?php echo ($row['city']=="臺中市") ?'selected':''?>>臺中市</option>
+                    <option value="苗栗縣" <?php echo ($row['city']=="苗栗縣") ?'selected':''?>>苗栗縣</option>
+                    <option value="彰化縣" <?php echo ($row['city']=="彰化縣") ?'selected':''?>>彰化縣</option>
+                    <option value="南投縣" <?php echo ($row['city']=="南投縣") ?'selected':''?>>南投縣</option>
+                    <option value="雲林縣" <?php echo ($row['city']=="雲林縣") ?'selected':''?>>雲林縣</option>
+                    <option value="高雄市" <?php echo ($row['city']=="高雄市") ?'selected':''?>>高雄市</option>
+                    <option value="屏東縣" <?php echo ($row['city']=="屏東縣") ?'selected':''?>>屏東縣</option>
+                    <option value="臺東縣" <?php echo ($row['city']=="臺東縣") ?'selected':''?>>臺東縣</option>
+                    <option value="花蓮縣" <?php echo ($row['city']=="花蓮縣") ?'selected':''?>>花蓮縣</option>
+                    <option value="宜蘭縣" <?php echo ($row['city']=="宜蘭縣") ?'selected':''?>>宜蘭縣</option>
             </select>
                 
             </div>
@@ -121,13 +117,12 @@ require __DIR__.'/__connect.php';
                 <small id="camp_openTimeHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
-                <label for="camp_target">11.適合對象</label>
-                <select name="camp_target" id="camp_target" value="<?= $row['camp_target'] ?>"  >
-                    <option value="0">請選擇</option>
-                    <option value="小家庭">小家庭</option>
-                    <option value="營火晚會">營火晚會</option>
-                    <option value="大型派對">大型派對</option>
-                    <option value="工商團體">工商團體</option>
+            <label for="camp_target">11.適合對象</label>
+            <select class="custom-select  col-sm-4 " name="camp_target" id="camp_target" value="<?= $row['camp_target'] ?>"  >
+                <option value="小家庭" <?php echo ($row['camp_target']=="小家庭") ?'selected':''?>>小家庭</option>
+                <option value="營火晚會" <?php echo ($row['camp_target']=="營火晚會") ?'selected':''?>>營火晚會</option>
+                <option value="大型派對" <?php echo ($row['camp_target']=="大型派對") ?'selected':''?>>大型派對</option>
+                <option value="工商團體" <?php echo ($row['camp_target']=="工商團體") ?'selected':''?>>工商團體</option>
             </select>
             </div>
            

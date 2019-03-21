@@ -58,7 +58,7 @@ if($page>$total_pages) $page=$total_pages;
       <!-- 後一頁 -->
       </li>
       <li class="insert_bottom">
-      <a class="btn btn-primary" href="campImg_insert.php" role="button">新增資料</a>
+      <a class="btn btn-primary" href="campImg_insert02.php" role="button">新增資料</a>
       </li>
     </ul>
     
@@ -68,6 +68,7 @@ if($page>$total_pages) $page=$total_pages;
   <thead>
     <tr>
       <th>#</th>
+      <th>照片</th>
       <th>營區名稱</th>
       <th>圖片名稱</th>
       <th>資料夾</th>
@@ -79,6 +80,9 @@ if($page>$total_pages) $page=$total_pages;
   <?php foreach($rows as $row): ?>
     <tr>
       <td><?= $row['campImg_id']?></td>
+      <td>
+        <img src="./<?= $row['camp_image'] ?>" alt="" height="50">
+      </td>
       <td><?= $row['camp_name']?></td>
       <td><?= $row['campImg_name']?></td>
       <td><?= $row['campImg_file']?></td>

@@ -8,29 +8,23 @@ $campImg_file = '';
   
  //isset檢查變數是否設置
 if (isset($_POST['checkme'])){
-
     $camp_name = $_POST['camp_name'];
     $campImg_name = $_POST['campImg_name'];
     $campImg_file = $_POST['campImg_file'];
-
-
 $sql="INSERT INTO `campsite_image`(
      `camp_name`, `campImg_name`, `campImg_file`
     ) VALUES (
         ?,?,?
         )";
     
-
     try{
         //準備執行
         $stmt=$pdo->prepare($sql);
-
         //執行$stmt，回傳陣列內容
         $stmt->execute([
             $_POST['camp_name'],
             $_POST['campImg_name'],
             $_POST['campImg_file'],
-
             ]);
         if ($stmt->rowCount()==1){
             $success=true;
@@ -53,14 +47,15 @@ $sql="INSERT INTO `campsite_image`(
        
         
     }
-
-
 ?>
 <?php include __DIR__.'/__html_header.php'; ?>
 <?php include __DIR__.'/__html_navbar01.php'; ?>
 <style>
 .form-group small{
     color:red !important;
+}
+#myimg{
+    margin-bottom:20px;
 }
 </style>
 <main class="col-9 bg-white">
@@ -105,7 +100,7 @@ $sql="INSERT INTO `campsite_image`(
             </div>
             <div class="form-group">
                   <label for="picture" >4.圖片</label><br>  
-                      <img id="myimg" src="" alt="" width="200px">
+                      <img id="myimg" src="" alt="" width="400px">
                       <br>
                     <input type="file" id="my_file" name="my_file"><br>
                        
@@ -113,10 +108,6 @@ $sql="INSERT INTO `campsite_image`(
                        
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-
-            
-            
-           
 
     </form>
         </div>
@@ -127,7 +118,6 @@ $sql="INSERT INTO `campsite_image`(
 <script>
 const myimg=document.querySelector('#myimg');
 const my_file=document.querySelector('#my_file');
-
 my_file.addEventListener('change', event => {
         
         const fd = new FormData();
@@ -141,7 +131,7 @@ my_file.addEventListener('change', event => {
             })
             .then(obj => {
                 console.log(obj);
-                myimg.setAttribute('src', 'upload/' + obj.filename); // 設定img屬性
+                myimg.setAttribute('src', 'upload/' + obj.filename); 
                 err.innerHTML = obj.info;
             })
     })
