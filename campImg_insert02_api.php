@@ -38,6 +38,7 @@ if (isset($_POST['checkme'])) {
             $result['errorCode'] = 401;
             $result['errorMsg'] = '圖片暫存檔無法搬移';
         }
+        
         $stmt->execute([
             $image_path,
             $_POST['camp_name'],
