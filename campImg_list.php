@@ -3,7 +3,7 @@
 require __DIR__.'/__connect.php';
  $page_name='picture_list';
 
- $per_page=5;
+ $per_page=10;
  $page=isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 //計算總筆數
@@ -71,7 +71,7 @@ if($page>$total_pages) $page=$total_pages;
       <th>照片</th>
       <th>營區名稱</th>
       <th>圖片名稱</th>
-      <th>資料夾</th>
+      <th>圖片說明</th>
       <th><i class="fas fa-edit"></i></th>
       <th><i class="fas fa-trash-alt"></i></th>
     </tr>

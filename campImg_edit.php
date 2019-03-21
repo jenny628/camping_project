@@ -38,7 +38,7 @@ require __DIR__.'/__connect.php';
         <div id="info_bar" class="alert alert-success" role="alert" style="display:none"></div>
             <h5 class="card-title">修改資料</h5>
             <form name="form2" method="post" onsubmit="return checkForm()" >
-            <input type="hidden" name="checkme" value="check123">
+            <input type="hidden" name="campImg_id" value="<?= $row['campImg_id'] ?>">
             <div class="form-group">
                 <label for="camp_name">1.營區名稱</label>
                 <input type="text" class="form-control" id="camp_name" name="camp_name" placeholder=""
@@ -52,12 +52,18 @@ require __DIR__.'/__connect.php';
                 <small id="campImg_nameHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
-                <label for="campImg_file">3.資料夾</label>
-                <input type="text" class="form-control" id="campImg_file" name="campImg_file" placeholder=""
-                value="<?=  $row['campImg_file'] ?>">
+                <label for="campImg_file">3.圖片說明</label>
+                <textarea class="form-control" id="campImg_file" name="campImg_file" cols="30" rows="3"><?= $row['campImg_file'] ?></textarea>
                 <small id="campImg_fileHelp" class="form-text text-muted"></small>
             </div>
-
+            <div class="form-group">
+                  <label for="picture" >4.圖片</label><br> 
+                  <input type="hidden" id="camp_image" name="camp_image" value="<?= $row['camp_image'] ?>">
+                      <img id="myimg" src="./<?= $row['camp_image'] ?>" alt="" width="400px">
+                      <br>
+                      <input type="file" name="my_file" id="my_file" accept="image/*">
+                       
+            </div>
             <button id="submit_btn" type="submit" class="btn btn-primary">Submit</button>
             </form>
                        
@@ -72,10 +78,11 @@ require __DIR__.'/__connect.php';
         const submit_btn = document.querySelector('#submit_btn');
 
         const field_image = [
+            'camp_image',
             'camp_name',
             'campImg_name',
             'campImg_file',
-            'campImg_path'
+            // 'campImg_path'
         
         ];
 
@@ -95,8 +102,8 @@ require __DIR__.'/__connect.php';
             for(let v of field_image){
                 tsv[v] = ts[v].value;
             }
-            //console.log(tsv);
-
+            console.log(tsv);
+            
             if(isPassed) {
                 let form2 = new FormData(document.form2);
 
@@ -123,13 +130,29 @@ require __DIR__.'/__connect.php';
                         submit_btn.style.display = 'block';
                     });
 
-
-
-            }else{
-                info_bar.innerHTML = '資料修改失敗'; ;
             }
             return false;
         };
+        const myimg=document.querySelector('#myimg');
+        const my_file=document.querySelector('#my_file');
 
+            my_file.addEventListener('change', event => {
+        // console.log(event.target);
+        const fd = new FormData();
+        fd.append('my_file', my_file.files[0]);
+        fetch('image_upload_api.php', {
+                method: 'POST',
+                body: fd
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(obj => {
+                console.log(obj);
+                myimg.setAttribute('src', 'upload/' + obj.filename); 
+                camp_image.setAttribute('value', 'upload/' + obj.filename);
+                err.innerHTML = obj.info;
+            })
+    })
     </script>
 <?php include __DIR__.'/__html_footer.php'; ?>

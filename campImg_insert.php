@@ -96,10 +96,10 @@ if (isset($_POST['checkme'])){
                 <small id="campImg_nameHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
-                <label for="campImg_file">3.資料夾</label>
-                <input type="text" class="form-control" id="campImg_file" name="campImg_file" placeholder=""
-                value="<?= $campImg_file ?>">
+                <label for="campImg_file">3.圖片說明</label>
+                <textarea class="form-control" id="campImg_file" name="campImg_file" cols="30" rows="3"><?= $campImg_file ?></textarea>
                 <small id="campImg_fileHelp" class="form-text text-muted"></small>
+                
             </div>
             <div class="form-group">
                   <label for="picture" >4.圖片</label><br> 

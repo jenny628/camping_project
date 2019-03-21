@@ -3,7 +3,7 @@
 require __DIR__.'/__connect.php';
  $page_name='campsite_list';
 
- $per_page=5;
+ $per_page=10;
  $page=isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 //計算總筆數
