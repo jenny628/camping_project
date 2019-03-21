@@ -58,7 +58,7 @@ if($page>$total_pages) $page=$total_pages;
       <!-- 後一頁 -->
       </li>
       <li class="insert_bottom">
-      <a class="btn btn-primary" href="campImg_insert02.php" role="button">新增資料</a>
+      <a class="btn btn-primary" href="campImg_insert.php" role="button">新增資料</a>
       </li>
     </ul>
     

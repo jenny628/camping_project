@@ -2,19 +2,21 @@
 //require __DIR__.'/__cred.php';
 require __DIR__.'/__connect.php';
 $page_name='campImg_insert';
+$camp_image = '';
 $camp_name = '';
 $campImg_name = '';
 $campImg_file = '';
   
  //isset檢查變數是否設置
 if (isset($_POST['checkme'])){
+    $camp_image = $_POST['camp_image'];
     $camp_name = $_POST['camp_name'];
     $campImg_name = $_POST['campImg_name'];
     $campImg_file = $_POST['campImg_file'];
-$sql="INSERT INTO `campsite_image`(
-     `camp_name`, `campImg_name`, `campImg_file`
+    $sql="INSERT INTO `campsite_image`(
+      `camp_image`,`camp_name`, `campImg_name`, `campImg_file`
     ) VALUES (
-        ?,?,?
+        ?,?,?,?
         )";
     
     try{
@@ -22,6 +24,7 @@ $sql="INSERT INTO `campsite_image`(
         $stmt=$pdo->prepare($sql);
         //執行$stmt，回傳陣列內容
         $stmt->execute([
+            $_POST['camp_image'],
             $_POST['camp_name'],
             $_POST['campImg_name'],
             $_POST['campImg_file'],
@@ -99,7 +102,8 @@ $sql="INSERT INTO `campsite_image`(
                 <small id="campImg_fileHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
-                  <label for="picture" >4.圖片</label><br>  
+                  <label for="picture" >4.圖片</label><br> 
+                  <input type="hidden" id="camp_image" name="camp_image" value="">
                       <img id="myimg" src="" alt="" width="400px">
                       <br>
                     <input type="file" id="my_file" name="my_file"><br>
@@ -118,8 +122,9 @@ $sql="INSERT INTO `campsite_image`(
 <script>
 const myimg=document.querySelector('#myimg');
 const my_file=document.querySelector('#my_file');
-my_file.addEventListener('change', event => {
-        
+
+    my_file.addEventListener('change', event => {
+        // console.log(event.target);
         const fd = new FormData();
         fd.append('my_file', my_file.files[0]);
         fetch('image_upload_api.php', {
@@ -132,6 +137,7 @@ my_file.addEventListener('change', event => {
             .then(obj => {
                 console.log(obj);
                 myimg.setAttribute('src', 'upload/' + obj.filename); 
+                camp_image.setAttribute('value', 'upload/' + obj.filename);
                 err.innerHTML = obj.info;
             })
     })
